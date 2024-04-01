@@ -6,8 +6,9 @@ export class TriviaController {
 
   constructor() {
     console.log('🎮');
-    this.connectionTest()
+    // this.connectionTest()
     this.getTrivia()
+
   }
 
   getTrivia() {
@@ -17,9 +18,9 @@ export class TriviaController {
 
 
 
-  connectionTest() {
-    triviasService.connectionTest('passed')
-  }
+  // connectionTest() {
+  //   triviasService.connectionTest('passed')
+  // }
 
 
 
