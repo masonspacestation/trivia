@@ -39,6 +39,14 @@ export class TriviaController {
   }
 
 
+  incorrectAnswerSelected() {
+    console.log('sorry, not correct');
+  }
+
+
+  correctAnswerSelected() {
+
+  }
   revealCorrectAnswer() {
 
   }

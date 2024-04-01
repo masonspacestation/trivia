@@ -42,7 +42,8 @@ export class TriviaQuestion {
   get activeIncorrectAnswers() {
     let activeIncorrectAnswers = ''
     this.incorrectAnswer.forEach(incAnswer => activeIncorrectAnswers += `
-    <div class="col-4 border border-4 bg-dark text-light">
+    <div class="col-4 border border-4 bg-dark text-light selectable" role="button"
+    onclick="app.TriviaController.incorrectAnswerSelected()">
     <h3>${incAnswer}</h3>
   </div>
   `)

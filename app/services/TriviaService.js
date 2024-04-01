@@ -6,7 +6,8 @@ class TriviasService {
 
   async getTrivia() {
     console.log('service got trivia');
-    const response = await fetch('https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple')
+
+    const response = await fetch('https://opentdb.com/api.php?amount=1&category=10&difficulty=easy&type=multiple')
 
     const triviaPojos = await response.json()
 
@@ -17,6 +18,11 @@ class TriviasService {
 
     console.log(AppState.triviaQuestions);
   }
+
+
+
+
+
 
   connectionTest(test) {
     console.log('service connection test: ', test);
