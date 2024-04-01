@@ -7,7 +7,14 @@ export class TriviaController {
   constructor() {
     console.log('🎮');
     this.connectionTest()
+    this.getTrivia()
   }
+
+  getTrivia() {
+    triviasService.getTrivia()
+
+  }
+
 
 
   connectionTest() {

@@ -3,7 +3,7 @@ import { createObservableProxy } from './utils/ObservableProxy.js'
 
 class ObservableAppState extends EventEmitter {
 
-  questions = []
+  triviaQuestions = []
 }
 
 export const AppState = createObservableProxy(new ObservableAppState())
