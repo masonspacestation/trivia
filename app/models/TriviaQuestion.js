@@ -31,7 +31,7 @@ export class TriviaQuestion {
     let revealAnswer = ''
     this.options.forEach(answer => revealAnswer += `
     <div class="col-4 rounded rounded-3 p-3 bg-${answer == this.correctAnswer ?
-        'success' : 'secondary'} text-light selectable" role="button"
+        'warning' : 'secondary'} text-light selectable" role="button"
    onclick="app.TriviaController.answerSelected('${answer}')">
     <h3>${answer}</h3>
     </div>
@@ -43,9 +43,9 @@ export class TriviaQuestion {
 
   get activeQuestion() {
     return `
-    <div class="card col-6 mb-5">
-      <h4>${this.question}</h4>
-      <div class="d-flex justify-content-around">
+    <div class="card col-6 px-5 pt-5 my-5">
+      <h4 class="mb-5 pb-3">${this.question}</h4>
+      <div class="d-flex align-items-end justify-content-around">
         <span class="w-auto text-start">Difficulty: ${this.difficulty}</span><span class="w-auto text-end">Category: ${this.category}</span>
       </div>
     </div>
