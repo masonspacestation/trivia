@@ -6,7 +6,7 @@ class ObservableAppState extends EventEmitter {
 
   triviaQuestions = []
 
-  allAnswers = []
+  activeQuestion = {}
 
 }
 

@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js";
 import { TriviaQuestion } from "../models/TriviaQuestion.js";
 import { triviasService } from "../services/TriviaService.js";
 import { setHTML } from "../utils/Writer.js";
+import { Pop } from "../utils/Pop.js";
 
 
 export class TriviaController {
@@ -33,32 +34,59 @@ export class TriviaController {
   drawAnswers() {
     let answers = AppState.triviaQuestions
     let answersDisplay = ''
-    answers.forEach(answer => answersDisplay += answer.activeIncorrectAnswers)
+    answers.forEach(answer => answersDisplay += answer.activeAnswers)
     setHTML('answers-display', answersDisplay)
 
   }
 
 
-  incorrectAnswerSelected() {
-    console.log('sorry, not correct');
-  }
+  async revealCorrectAnswer() {
+    let answers = AppState.triviaQuestions
+    let answersDisplay = ''
+    await answers.forEach(answer => answersDisplay += answer.revealAnswer)
+    setHTML('answers-display', answersDisplay)
 
-
-  correctAnswerSelected() {
-
-  }
-  revealCorrectAnswer() {
+    document.getElementById('next-button').classList.remove('d-none')
 
   }
 
-  // connectionTest() {
-  //   triviasService.connectionTest('passed')
-  // }
+  loadNextQuestion() {
+    document.getElementById('next-button').classList.add('d-none')
+    console.log('good');
+    this.getTrivia()
+    console.log('still good');
 
 
+  }
+
+  answerSelected(answer) {
+    console.log('ye have answered. . . poorly');
+    Pop.toast('Try Again!', 'error', 'center')
+
+  }
+
+  correctAnswerSelected(answer) {
+    console.log('ye have answered');
+    Pop.toast('You Win!', 'success', 'center')
+    this.revealCorrectAnswer()
+
+  }
 
 
 
 
 
 }
+
+
+
+// connectionTest() {
+//   triviasService.connectionTest('passed')
+// }
+
+
+
+
+
+
+

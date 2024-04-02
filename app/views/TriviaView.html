@@ -29,9 +29,13 @@
   <section id="answers-display" class="row gap-4 justify-content-center">
   </section>
 
-  <div class="col-4 border border-4 bg-light selectable" role="button"
-    onclick="app.TriviaController.correctAnswerSelected()">
-    <h3>correctAnswer</h3>
-  </div>
+  <section id="next-button" class="row mt-5 justify-content-center text-center d-none">
+    <button class="btn bg-dark text-light rounded rounded-2 fs-6 w-auto px-4 py-2"
+      onclick="app.TriviaController.loadNextQuestion()">Next Question</button>
+  </section>
+
+
+
+
 
 </section>

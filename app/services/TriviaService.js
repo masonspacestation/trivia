@@ -17,6 +17,7 @@ class TriviasService {
     AppState.triviaQuestions = triviaQuestions
 
     console.log(AppState.triviaQuestions);
+    AppState.emit('triviaQuestions')
   }
 
 

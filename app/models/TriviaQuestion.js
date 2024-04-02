@@ -7,6 +7,38 @@ export class TriviaQuestion {
     this.incorrectAnswer = data.incorrect_answers
     this.difficulty = data.difficulty
     this.category = data.category
+    this.options = [this.correctAnswer, this.incorrectAnswer[0], this.incorrectAnswer[1], this.incorrectAnswer[2]]
+  }
+
+
+  get activeAnswers() {
+    let activeAnswers = ''
+    this.options.forEach(answer => activeAnswers += `
+    <div class="col-4 rounded rounded-3 p-3 bg-dark text-light selectable" role="button"
+    onclick="${answer == this.correctAnswer ?
+        'app.TriviaController.correctAnswerSelected()' : 'app.TriviaController.answerSelected()'}">
+    <h3>${answer}</h3>
+    </div>
+    `
+    )
+
+
+    return activeAnswers
+  }
+
+
+  get revealAnswer() {
+    let revealAnswer = ''
+    this.options.forEach(answer => revealAnswer += `
+    <div class="col-4 rounded rounded-3 p-3 bg-${answer == this.correctAnswer ?
+        'success' : 'secondary'} text-light selectable" role="button"
+   onclick="app.TriviaController.answerSelected('${answer}')">
+    <h3>${answer}</h3>
+    </div>
+    `
+    )
+
+    return revealAnswer
   }
 
   get activeQuestion() {
@@ -21,34 +53,7 @@ export class TriviaQuestion {
 `
   }
 
-  get activeAnswers() {
-    return `
-    <div class="col-4 border border-4 bg-light">
-      <h3>${this.correctAnswer}</h3>
-    </div>
-    <div class="col-4 border border-4 bg-dark text-light">
-      <h3>${this.incorrectAnswer}</h3>
-    </div>
-    <div class="col-4 border border-4 bg-dark text-light">
-      <h3>${this.incorrectAnswer}</h3>
-    </div>
-    <div class="col-4 border border-4 bg-light">
-      <h3>${this.incorrectAnswer}</h3>
-    </div>
-  </section>
-  `
-  }
 
-  get activeIncorrectAnswers() {
-    let activeIncorrectAnswers = ''
-    this.incorrectAnswer.forEach(incAnswer => activeIncorrectAnswers += `
-    <div class="col-4 border border-4 bg-dark text-light selectable" role="button"
-    onclick="app.TriviaController.incorrectAnswerSelected()">
-    <h3>${incAnswer}</h3>
-  </div>
-  `)
-    return activeIncorrectAnswers
-  }
 
 }
 
